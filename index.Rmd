@@ -1,0 +1,68 @@
+---
+title: "El junco de los páramos (Junco Volcani)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Preparativos 
+
+```{r cargapaquetes, message=FALSE, warning=FALSE}
+#carga de paquetes
+library(dplyr)
+library(sf)
+library(DT)
+library(plotly)
+library(leaflet)
+```
+```{r}
+# Registros de presencia de Junco vulcani
+junco_vulcani <-
+  st_read(
+    "https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/gbif/junco_vulcani-cr-registros.csv",
+    options = c(
+      "X_POSSIBLE_NAMES=decimalLongitude",
+      "Y_POSSIBLE_NAMES=decimalLatitude"
+    ),
+    quiet = TRUE
+  )
+```
+
+```{r}
+# Capa geespacial de cantones
+cantones <-
+  st_read(
+    "https://raw.githubusercontent.com/gf0604-procesamientodatosgeograficos/2021i-datos/main/ign/delimitacion-territorial-administrativa/cr_cantones_simp_wgs84.geojson",
+    quiet = TRUE
+  )
+
+```
+
+
+```{r}
+# Asignación de CRS
+st_crs(junco_vulcani) = 4326
+
+```
+
+# Introduccion
+### Pájaro de apariencia demoníaca con un ojo amarillo,Se encuentra en hábitats abiertos en elevaciones altas, usualmente arriba de 3000m pero localmente hasta 2500m,A menudo en el suelo o en pequeños arbustos y generalmente en parejas o grupos pequeños. Rango muy limitado sólo en Costa Rica y el extremo occidental de Panamá. (eBird, [ Junco vulcani](https://ebird.org/species/voljun1))
+
+
+# Tabla de registros de presencia 
+
+# Gráfico de estacionalidad
+
+# Gráfico de historial
+
+# Mapa de distribucion
+
+
+
+
+```{r}
+```
+
+```{r}
+```
