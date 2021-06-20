@@ -50,9 +50,29 @@ st_crs(junco_vulcani) = 4326
 ### Pájaro de apariencia demoníaca con un ojo amarillo,Se encuentra en hábitats abiertos en elevaciones altas, usualmente arriba de 3000m pero localmente hasta 2500m,A menudo en el suelo o en pequeños arbustos y generalmente en parejas o grupos pequeños. Rango muy limitado sólo en Costa Rica y el extremo occidental de Panamá. (eBird, [ Junco vulcani](https://ebird.org/species/voljun1))
 
 
-# Tabla de registros de presencia 
 
-# Gráfico de estacionalidad
+```{r, message=FALSE, warning=FALSE}
+# Cruce espacial con la tabla de cantones, para obtener el nombre del cantón
+junco_vulcani <- 
+  junco_vulcani %>%
+  st_join(cantones["canton"])
+```
+# Tabla de registros de presencia 
+```{r}
+
+# Tabla de registros de presencia
+junco_vulcani %>%
+  st_drop_geometry() %>%
+  select(stateProvince, canton, locality, eventDate) %>%
+  datatable(
+    colnames = c("Provincia", "Cantón", "Localidad", "Fecha"),
+    options = list(searchHighlight = TRUE)
+  )
+```
+
+
+# Gráfico de estacionalidad amdladadadadad
+
 
 # Gráfico de historial
 
